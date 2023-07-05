@@ -1,30 +1,31 @@
-REQUIREMENT PACKAGES:
-sudo apt update
-sudo apt install apt-transport-https ca-certificates curl software-properties-common
+### REQUIREMENT PACKAGES:
+<code>sudo apt update</code>
+<br/>
+<code>sudo apt install apt-transport-https ca-certificates curl software-properties-common</code>
+<br/>
+### GPG REPO:
+<code>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg</code>
 
-GPG REPO:
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+### APT REPO SOURCES:
+<code>echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null</code>
 
-APT REPO SOURCES:
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+### UPDATE INTERNAL REPO SYSTEM
+<code>sudo apt update</code>
 
-UPDATE INTERNAL REPO SYSTEM
-sudo apt update
+### verify repo from docker:
+<code>apt-cache policy docker-ce</code>
 
-verify repo from docker:
-apt-cache policy docker-ce
+### INSTALL:
+<code>sudo apt install docker-ce</code>
 
-INSTALL:
-sudo apt install docker-ce
+### CHECK STATUS:
+<code>sudo systemctl status docker</code>
 
-CHECK STATUS:
-sudo systemctl status docker
+### ROOTLESS:
+<code>sudo usermod -aG docker ${USER}</code>
 
-ROOTLESS:
-sudo usermod -aG docker ${USER}
+### Check Rootless:
+<code>groups</code>
 
-Check Rootless: 
-groups
-
-check docker access:
-docker info
+### check docker access:
+<code>docker info</code>
